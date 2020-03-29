@@ -4,30 +4,20 @@ from database.db import initialize_db
 from flask_restful import Api
 from resources.routes import initialize_routes
 from flask_bcrypt import Bcrypt
+from flask_jwt_extended import JWTManager
 
 app = Flask(__name__)
+app.config.from_envvar('ENV_FILE_LOCATION')
+
 api = Api(app)
 bcrypt = Bcrypt(app)
+jwt = JWTManager(app)
 
-app.config['SECRET_KEY'] = 'f8a184aad925228fe58bf94ceea9f20f'
+
 app.config['MONGODB_SETTINGS'] = {
     'host': 'mongodb://localhost/proposal-management'}
 
 initialize_db(app)
-
-
-@app.route('/')
-def hello():
-    return "Home Page"
-
-
-@app.route('/login', methods=['POST', 'GET'])
-def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        return redirect("/")
-    return render_template('login.html', form=form)
-
 
 initialize_routes(api)
 
