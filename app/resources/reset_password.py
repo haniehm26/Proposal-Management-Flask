@@ -7,7 +7,7 @@ from jwt.exceptions import ExpiredSignatureError, DecodeError, \
 
 from database.models import User
 from .errors import SchemaValidationError, InternalServerError, \
-    EmailDoesnotExistsError, BadTokenError, ExpiredTokenError
+    EmailDoesNotExistsError, BadTokenError, ExpiredTokenError
 from services.mail_service import send_email
 
 
@@ -22,7 +22,7 @@ class ForgotPassword(Resource):
 
             user = User.objects.get(email=email)
             if not user:
-                raise EmailDoesnotExistsError
+                raise EmailDoesNotExistsError
 
             expires = datetime.timedelta(hours=24)
             reset_token = create_access_token(
@@ -36,8 +36,8 @@ class ForgotPassword(Resource):
                               html_body=render_template('email/reset_password.html', url=url + reset_token))
         except SchemaValidationError:
             raise SchemaValidationError
-        except EmailDoesnotExistsError:
-            raise EmailDoesnotExistsError
+        except EmailDoesNotExistsError:
+            raise EmailDoesNotExistsError
         except Exception:
             raise InternalServerError
 
