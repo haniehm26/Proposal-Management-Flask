@@ -12,6 +12,8 @@ flask-restful = "*"
 flask-bcrypt = "*"
 flask-mail = "*"
 flask-jwt-extended = "*"
+flask-admin = "*"
+flask-appbuilder = "*"
 
 [requires]
 python_version = "3.8"
