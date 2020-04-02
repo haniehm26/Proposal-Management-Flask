@@ -11,7 +11,7 @@ from database.db import initialize_db
 app = Flask(__name__)
 app.config.from_envvar('ENV_FILE_LOCATION')
 
-admin = Admin(app)
+admin = Admin(app, name='Admin Panel')
 
 from admin.admin import AdminViews
 

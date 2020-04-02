@@ -14,6 +14,8 @@ flask-mail = "*"
 flask-jwt-extended = "*"
 flask-admin = "*"
 flask-appbuilder = "*"
+flask-user = "*"
+flask-debugtoolbar = "*"
 
 [requires]
 python_version = "3.8"

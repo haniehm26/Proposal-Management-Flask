@@ -11,3 +11,20 @@ class User(db.Document):
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
+
+
+class Student(db.Document):
+    student_id = db.IntField(required=True, unique=True)
+    first_name = db.StringField(required=True)
+    last_name = db.StringField(required=True)
+    entry_date = db.DateTimeField(required=True)
+    field = db.StringField(required=True)
+    profile_pic = db.URLField()
+
+
+# class Professor(db.Document):
+#     professor_id = db.IntField(required=True, unique=True)
+#     first_name = db.StringField(required=True)
+#     last_name = db.StringField(required=True)
+#     field = db.StringField(required=True)
+#     profile_pic = db.URLField()
