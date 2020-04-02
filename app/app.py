@@ -11,6 +11,8 @@ app = Flask(__name__)
 app.config.from_envvar('ENV_FILE_LOCATION')
 mail = Mail(app)
 
+from resources.routes import initialize_routes
+
 api = Api(app, errors=errors)
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
@@ -19,7 +21,4 @@ app.config['MONGODB_SETTINGS'] = {
     'host': 'mongodb://localhost/proposal-management'}
 
 initialize_db(app)
-
-from resources.routes import initialize_routes
-
 initialize_routes(api)
