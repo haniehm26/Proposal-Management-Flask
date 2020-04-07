@@ -2,20 +2,27 @@ from flask import request
 from flask_restful import Resource
 from flask_jwt_extended import create_access_token
 import datetime
-from mongoengine.errors import DoesNotExist
+from mongoengine.errors import DoesNotExist, NotUniqueError, FieldDoesNotExist
 
 from database.models import User
-from .errors import InternalServerError, UnauthorizedError
+from .errors import InternalServerError, UnauthorizedError, EmailAlreadyExistsError, SchemaValidationError
 
 
 class SignupApi(Resource):
     def post(self):
-        body = request.get_json()
-        user = User(**body)
-        user.hash_password()
-        user.save()
-        id = user.id
-        return {'id': str(id)}, 200
+        try:
+            body = request.get_json()
+            user = User(**body)
+            user.hash_password()
+            user.save()
+            id = user.id
+            return {'id': str(id)}, 200
+        except FieldDoesNotExist:
+            raise SchemaValidationError
+        except NotUniqueError:
+            raise EmailAlreadyExistsError
+        except Exception:
+            raise InternalServerError
 
 
 class LoginApi(Resource):

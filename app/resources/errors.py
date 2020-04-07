@@ -26,6 +26,10 @@ class ExpiredTokenError(Exception):
     pass
 
 
+class EmailAlreadyExistsError(Exception):
+    pass
+
+
 errors = {
     "InternalServerError": {
         "message": "Something went wrong",
@@ -54,5 +58,9 @@ errors = {
     "ExpiredTokenError": {
         "message": "Expired token",
         "status": 403
+    },
+    "EmailAlreadyExists": {
+        "message": "Email already exists",
+        "status": 400
     }
 }
