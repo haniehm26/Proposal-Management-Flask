@@ -1,8 +1,13 @@
 from flask_admin.contrib.mongoengine import ModelView
-
+from flask_admin import Admin
 from database.models import User, Student, Professor, DefendDay, Proposal, FreeTimes, \
     Document, Checking, Council, Modification
-from app import admin
+
+admin = Admin()
+
+
+def initialize_admin(app):
+    admin.init_app(app)
 
 
 class AdminViews(ModelView):

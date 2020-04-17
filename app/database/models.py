@@ -8,7 +8,7 @@ from .choices import USER_TYPE, STUDENT_TYPE, PROFESSOR_GROUP, PROFESSOR_RESPONS
 class User(db.Document):
     email = db.EmailField(required=True, unique=True, max_length=45, default="test@example.com")
     password = db.StringField(required=True, max_length=45, default="password")
-    type = db.StringField(choices=USER_TYPE, required=True, max_length=1)
+    type = db.IntField(choices=USER_TYPE, required=True, max_length=1)
 
     def hash_password(self):
         self.password = generate_password_hash(self.password).decode('utf8')

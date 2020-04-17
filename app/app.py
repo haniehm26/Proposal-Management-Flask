@@ -3,17 +3,16 @@ from flask_restful import Api
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager
 from flask_mail import Mail
-from flask_admin import Admin
 
+from admin.admin import initialize_admin, AdminViews
 from resources.errors import errors
 from database.db import initialize_db
 
 app = Flask(__name__)
 app.config.from_envvar('ENV_FILE_LOCATION')
 
-admin = Admin(app, name='Admin Panel')
-
-from admin.admin import AdminViews
+initialize_admin(app)
+AdminViews
 
 mail = Mail(app)
 
