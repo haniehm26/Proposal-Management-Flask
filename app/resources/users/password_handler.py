@@ -5,7 +5,8 @@ import datetime
 from jwt.exceptions import ExpiredSignatureError, DecodeError, \
     InvalidTokenError
 
-from database.models import User
+from database.checking import hash_password
+from database.db import mongo
 from .errors import SchemaValidationError, InternalServerError, \
     EmailDoesNotExistsError, BadTokenError, ExpiredTokenError
 from services.mail_service import send_email
@@ -19,18 +20,18 @@ class ForgotPassword(Resource):
             email = body.get('email')
             if not email:
                 raise SchemaValidationError
-
-            user = User.objects.get(email=email)
-            if not user:
+            users = mongo.db.users
+            user_found = users.find_one({'email': email})
+            if not user_found:
                 raise EmailDoesNotExistsError
 
             expires = datetime.timedelta(hours=24)
             reset_token = create_access_token(
-                str(user.id), expires_delta=expires)
+                email, expires_delta=expires)
 
             return send_email('[Proposal-Management] Reset Your Password',
                               sender='support@proposal-management.com',
-                              recipients=[user.email],
+                              recipients=[email],
                               text_body=render_template(
                                   'email/reset_password.txt', url=url + reset_token),
                               html_body=render_template('email/reset_password.html', url=url + reset_token))
@@ -53,17 +54,14 @@ class ResetPassword(Resource):
             if not reset_token or not password:
                 raise SchemaValidationError
 
-            user_id = decode_token(reset_token)['identity']
+            user_email = decode_token(reset_token)['identity']
 
-            user = User.objects.get(id=user_id)
-
-            user.modify(password=password)
-            user.hash_password()
-            user.save()
-
+            users = mongo.db.users
+            hashed_password = hash_password(body['password'])
+            output = users.update({'email': user_email}, {'password': hashed_password})
             return send_email('[Proposal-Management] Password reset successful',
                               sender='support@proposal-management.com',
-                              recipients=[user.email],
+                              recipients=[user_email],
                               text_body='Password reset was successful',
                               html_body='<p>Password reset was successful</p>')
 
