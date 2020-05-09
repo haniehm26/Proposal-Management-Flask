@@ -1,0 +1,61 @@
+{
+  "first_name": "Hamidreza",
+  "last_name": "Attarzade",
+  "email": "attar@gmail.com",
+  "password": "ee..man...attaram..betars??",
+  "is_prof": true,
+  "students_to_judge": [
+    [
+      "email1",
+      "name"
+    ],
+    [
+      "email2",
+      "name"
+    ]
+  ],
+  "supervisor_of": [
+    [
+      "email4",
+      "name"
+    ],
+    [
+      "email23",
+      "name"
+    ]
+  ],
+  "info": {
+    "prof_id": "95243053",
+    "rank": "استاد تمام",
+    "license": "مهندسی برق",
+    "major": "مهندسی کامپیوتر",
+    "groups": [
+      "معماری",
+      "شبکه",
+      "برق"
+    ],
+    "field_of_study": [
+      "هوش مصنوعی",
+      "embeded",
+      "real-time",
+      "network"
+    ],
+    "profile_pic": "binary codes...",
+    "responsibilities": [
+      "مدیر گروه",
+      "مشاوره"
+    ]
+  },
+  "free_times": {
+    "dates": [
+      [
+        "16-2-1399",
+        "10:30"
+      ],
+      [
+        "17-2-1399",
+        "16:00"
+      ]
+    ]
+  }
+}

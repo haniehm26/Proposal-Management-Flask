@@ -16,6 +16,7 @@ flask-admin = "*"
 flask-appbuilder = "*"
 flask-user = "*"
 flask-debugtoolbar = "*"
+flask-pymongo = "*"
 
 [requires]
 python_version = "3.8"

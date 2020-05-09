@@ -1,0 +1,112 @@
+{
+  "first_name": "Pouya",
+  "last_name": "Mohammadkhani",
+  "email": "pouya101killer@gmail.com",
+  "password": "ee..zeranghi??",
+  "is_prof": false,
+  "info": {
+    "student_id": "95243053",
+    "entry_date": "1395",
+    "field": "مهندسی کامپیوتر",
+    "attitude": [
+      "نرم افزار و سیستم های اطلاعاتی",
+      "معماری سامانه کامپیوتری",
+      "هوش مصنوعی، رباتیک و رایانش شناختی"
+    ],
+    "profile_pic": "binary codes...",
+    "state": [
+      "روزانه",
+      "شبانه",
+      "مجازی",
+      "پردیس"
+    ]
+  },
+  "proposal": {
+    "year": "1396",
+    "semester": [
+      "1",
+      "2"
+    ],
+    "group": [
+      "نرم افزار و سیستم های اطلاعاتی",
+      "معماری سامانه کامپیوتری",
+      "هوش مصنوعی، رباتیک و رایانش شناختی"
+    ],
+    "supervisor_prof_id": "1234",
+    "judge_1_id": "4321",
+    "judge_2_id": "9870",
+    "state": [
+      "ثبت اولیه",
+      "بررسی آنلاین پروپوزال",
+      "نیاز به تغییرات",
+      "برگزاری جلسه دفاع",
+      "اصلاح کلی",
+      "اصلاح جزئی",
+      "تایید شورا",
+      "نیازمند انجام اصلاحات",
+      "تایید",
+      "تبدیل به آموزش-محور"
+    ],
+    "document": {
+      "title_persian": "بهبود روش امتیازدهی ",
+      "title_english": "Improving the method of scoring",
+      "keywords_persian": [
+        "آ",
+        "ب",
+        "ث",
+        "ت",
+        "پ"
+      ],
+      "keywords_english": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e"
+      ],
+      "type": [
+        "بنیادی",
+        "نظری",
+        "کاربردی",
+        "توسعه ای"
+      ],
+      "introduction": "تعریف مسئله",
+      "how_to_solve": "تعریف مسئله",
+      "back_words": "تعریف مسئله",
+      "assumption": "تعریف مسئله",
+      "definition": "تعریف مسئله",
+      "history": "تعریف مسئله",
+      "tools": "تعریف مسئله",
+      "references": "ref, ref, ...",
+      "references_other_languages": "تعریف مسئله",
+      "time_table": [
+        "امروز",
+        "فردا",
+        "اگه عمری باشه پس فردا"
+      ]
+    },
+    "checking": {
+      "judge_1_opinion": "",
+      "judge_2_opinion": "",
+      "result": "0"
+    },
+    "modification": {
+      "judge_1_opinion": "",
+      "judge_2_opinion": "",
+      "result": "1"
+    },
+    "defend_day": {
+      "judge_1_opinion": "",
+      "judge_2_opinion": "",
+      "result": "1",
+      "time": [
+        "2020-12-13",
+        "16:30"
+      ]
+    },
+    "council": {
+      "result": "1",
+      "final_result": "1"
+    }
+  }
+}

@@ -44,9 +44,9 @@ class UserApi(Resource):
             users = mongo.db.users
             body = request.get_json()
             password = hash_password(body['password'])
-            output = users.update({'email': email},
-                                  {'email': body['email'], 'password': password, 'is_prof': body['is_prof']})
-            return ''
+            output = users.update({'email': email}, {"$set": {'email': body['email'], 'password': password,
+                                                              'is_prof': body['is_prof']}})
+            return jsonify(output)
         except ConfigurationError:
             raise SchemaValidationError
         except CursorNotFound:

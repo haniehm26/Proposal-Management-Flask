@@ -7,7 +7,7 @@ from jwt.exceptions import ExpiredSignatureError, DecodeError, \
 
 from database.checking import hash_password
 from database.db import mongo
-from .errors import SchemaValidationError, InternalServerError, \
+from resources.errors import SchemaValidationError, InternalServerError, \
     EmailDoesNotExistsError, BadTokenError, ExpiredTokenError
 from services.mail_service import send_email
 
