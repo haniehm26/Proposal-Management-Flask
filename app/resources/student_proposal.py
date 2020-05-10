@@ -40,3 +40,26 @@ class SetProposalGeneralInfo(Resource):
         current_user_email = get_jwt_identity()
         users = mongo.db.users
         user = users.find_one({'email': current_user_email})
+        if user['is_prof'] == 'false':
+            out = "It's student"
+            body = request.get_json()
+            proposal_document_title_persian = body.get('title_persian')
+            proposal_document_title_english = body.get('title_english')
+            proposal_document_keywords_persian = body.get('keywords_persian')
+            proposal_document_keywords_english = body.get('keywords_english')
+            proposal_document_type = body.get('type')
+            students = mongo.db.students
+            student = students.find_one({'email': current_user_email})
+            students.update({'email': student['email']},
+                            {"$set": {
+                                'proposal_document_title_persian': proposal_document_title_persian,
+                                'proposal_document_title_english': proposal_document_title_english,
+                                'proposal_document_keywords_persian': proposal_document_keywords_persian,
+                                'proposal_document_keywords_english': proposal_document_keywords_english,
+                                'proposal_document_type': proposal_document_type
+                            }})
+            print(student)
+        else:
+            out = "It's prof"
+        return jsonify({'out': out})
+
