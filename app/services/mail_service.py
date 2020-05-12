@@ -1,8 +1,8 @@
 from threading import Thread
 from flask_mail import Message
 
-from app import mail
-from app import app
+from run.app import mail
+from run.app import app
 from resources.errors import InternalServerError
 
 
