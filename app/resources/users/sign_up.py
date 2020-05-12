@@ -19,7 +19,7 @@ class SignupApi(Resource):
                 password = hash_password(body['password'])
                 user_id = users.insert({'email': body['email'], 'password': password, 'is_prof': body['is_prof']})
                 new_user = users.find_one({'_id': user_id})
-                output = {'email': new_user['email'], 'password': new_user['password'], 'is_prof': new_user['is_prof']}
+                output = {'email': new_user['email'], 'is_prof': new_user['is_prof']}
                 if new_user['is_prof'] == 'false':
                     handle_student(new_user, body)
                 else:
@@ -35,8 +35,6 @@ def handle_student(new_user, body):
     students = mongo.db.students
     students.insert({
         'email': new_user['email'],
-        'password': new_user['password'],
-        'is_prof': new_user['is_prof'],
         'first_name': body.get('first_name'),
         'last_name': body.get('last_name'),
         'info_student_id': body.get('id'),
@@ -85,8 +83,6 @@ def handle_prof(new_user, body):
     profs = mongo.db.profs
     profs.insert({
         'email': new_user['email'],
-        'password': new_user['password'],
-        'is_prof': new_user['is_prof'],
         'first_name': body.get('first_name'),
         'last_name': body.get('last_name'),
         'students_to_judge': [],

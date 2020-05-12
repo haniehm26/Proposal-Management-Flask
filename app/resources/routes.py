@@ -17,7 +17,7 @@ def initialize_routes(api):
     api.add_resource(SignupApi, '/api/signup')  # post
     api.add_resource(LoginApi, '/api/login')  # post
     api.add_resource(EditProfileInfo, '/api/edit_profile_info')  # post
-    api.add_resource(DeleteAccount, '/api/delete_account')  # delete
+    api.add_resource(DeleteAccount, '/api/delete_account')  # post
     api.add_resource(ForgotPassword, '/api/forgot_password')  # post
     api.add_resource(ResetPassword, '/api/reset_password')  # post
     # STUDENT API

@@ -10,6 +10,5 @@ class StudentsApi(Resource):
         output = []
         for u in students.find():
             output.append(
-                {'email': u['email'], 'password': u['password'], 'is_prof': u['is_prof'], 'first_name': u['first_name'],
-                 'last_name': u['last_name']})
+                {'email': u['email'], 'first_name': u['first_name'],'last_name': u['last_name']})
         return jsonify({'result': output})

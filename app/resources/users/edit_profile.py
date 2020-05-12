@@ -29,8 +29,6 @@ class EditProfileInfo(Resource):
                     student = students.find_one({'email': current_user_email})
                     students.update({'email': student['email']},
                                     {"$set": {'email': body['email'],
-                                              'password': password,
-                                              'is_prof': body['is_prof'],
                                               'first_name': body['first_name'],
                                               'last_name': body['last_name'],
                                               'info_student_id': body['id'],
@@ -44,8 +42,6 @@ class EditProfileInfo(Resource):
                     prof = profs.find_one({'email': current_user_email})
                     profs.update({'email': prof['email']},
                                  {"$set": {'email': body['email'],
-                                           'password': password,
-                                           'is_prof': body['is_prof'],
                                            'first_name': body['first_name'],
                                            'last_name': body['last_name'],
                                            'info_prof_id': body['id'],
