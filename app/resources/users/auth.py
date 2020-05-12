@@ -55,12 +55,12 @@ class LoginApi(Resource):
 def handle_student(new_user, body):
     students = mongo.db.students
     students.insert({
-        'email': new_user['email'],
-        'password': new_user['password'],
-        'is_prof': new_user['is_prof'],
-        'first_name': body.get('first_name'),
-        'last_name': body.get('last_name'),
-        'info_student_id': " ",
+        'email': new_user['email'],  # done
+        'password': new_user['password'],  # done
+        'is_prof': new_user['is_prof'],  # done
+        'first_name': body.get('first_name'),  # done
+        'last_name': body.get('last_name'),  # done
+        'info_student_id': body.get('id'),  # done
         'info_entry_date': " ",
         'info_field': " ",
         'info_attitude': " ",
@@ -69,25 +69,25 @@ def handle_student(new_user, body):
         'proposal_year': " ",
         'proposal_semester': " ",
         'proposal_group': " ",
-        'proposal_supervisor_prof_email': " ",
+        'proposal_supervisor_prof_email': " ",  # done
         'proposal_judge_1_email': " ",
         'proposal_judge_2_email': " ",
         'proposal_state': " ",
-        'proposal_document_title_persian': " ",
-        'proposal_document_title_english': " ",
-        'proposal_document_keywords_persian': [],
-        'proposal_document_keywords_english': [],
-        'proposal_document_type': " ",
-        'proposal_document_introduction': " ",
-        'proposal_document_how_to_solve': " ",
-        'proposal_document_back_words': " ",
-        'proposal_document_assumption': " ",
-        'proposal_document_definition': " ",
-        'proposal_document_history': " ",
-        'proposal_document_tools': " ",
-        'proposal_document_references': " ",
-        'proposal_document_references_other_languages': " ",
-        'proposal_document_time_table': " ",
+        'proposal_document_title_persian': " ",  # done
+        'proposal_document_title_english': " ",  # done
+        'proposal_document_keywords_persian': [],  # done
+        'proposal_document_keywords_english': [],  # done
+        'proposal_document_type': " ",  # done
+        'proposal_document_supportive_reference': " ",  # done
+        'proposal_document_how_to_solve': " ",  # done
+        'proposal_document_is_new': " ",  # done
+        'proposal_document_assumption': " ",  # done
+        'proposal_document_definition': " ",  # done
+        'proposal_document_history': " ",  # done
+        'proposal_document_tools': " ",  # done
+        'proposal_document_references': " ",  # done
+        'proposal_document_references_other_languages': " ",  # done
+        'proposal_document_time_table': " ",  # done
         'proposal_checking_judge_1_opinion': " ",
         'proposal_checking_result': " ",
         'proposal_modification_judge_1_opinion': " ",
@@ -105,14 +105,14 @@ def handle_student(new_user, body):
 def handle_prof(new_user, body):
     profs = mongo.db.profs
     profs.insert({
-        'email': new_user['email'],
-        'password': new_user['password'],
-        'is_prof': new_user['is_prof'],
-        'first_name': body.get('first_name'),
-        'last_name': body.get('last_name'),
+        'email': new_user['email'],  # done
+        'password': new_user['password'],  # done
+        'is_prof': new_user['is_prof'],  # done
+        'first_name': body.get('first_name'),  # done
+        'last_name': body.get('last_name'),  # done
         'students_to_judge': [],
-        'supervisor_of': [],
-        'info_prof_id': " ",
+        'supervisor_of': [],  # done
+        'info_prof_id': body.get('id'),  # done
         'info_rank': " ",
         'info_license': " ",
         'info_major': " ",
