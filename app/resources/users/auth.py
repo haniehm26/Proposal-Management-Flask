@@ -4,7 +4,7 @@ from flask_jwt_extended import create_access_token
 import datetime
 from pymongo.errors import CursorNotFound, CollectionInvalid
 
-from database.checking import hash_password, check_password
+from database.hashing import hash_password, check_password
 from database.db import mongo
 from resources.errors import InternalServerError, UnauthorizedError, EmailAlreadyExistsError, SchemaValidationError
 

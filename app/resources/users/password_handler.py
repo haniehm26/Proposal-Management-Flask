@@ -5,7 +5,7 @@ import datetime
 from jwt.exceptions import ExpiredSignatureError, DecodeError, \
     InvalidTokenError
 
-from database.checking import hash_password
+from database.hashing import hash_password
 from database.db import mongo
 from resources.errors import SchemaValidationError, InternalServerError, \
     EmailDoesNotExistsError, BadTokenError, ExpiredTokenError

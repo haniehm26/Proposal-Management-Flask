@@ -5,7 +5,7 @@ from pymongo.errors import CursorNotFound, ConfigurationError
 
 from resources.errors import InternalServerError, SchemaValidationError, UserNotExistsError
 from database.db import mongo
-from database.checking import hash_password
+from database.hashing import hash_password
 from resources.students.student_proposal import curr_user_is_student
 
 
