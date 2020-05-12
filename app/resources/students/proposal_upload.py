@@ -3,10 +3,10 @@ from flask_restful import Resource
 from flask import jsonify
 
 from database.db import mongo
-from .student_proposal import curr_user_is_student
+from resources.students.student_proposal import curr_user_is_student
 import io
 
-PATH = 'D:/Uni/Term 6/Software/Project/Project-Flask/app/static/upload_files/txt/'
+PATH = '/static/upload_files/txt/'
 
 
 class ProposalUpload(Resource):

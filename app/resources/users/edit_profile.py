@@ -3,10 +3,10 @@ from flask_restful import Resource
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from pymongo.errors import CursorNotFound, ConfigurationError
 
-from resources.errors import InternalServerError, SchemaValidationError, UserNotExistsError, EmailAlreadyExistsError
+from resources.errors import InternalServerError, SchemaValidationError, UserNotExistsError
 from database.db import mongo
 from database.checking import hash_password
-from ..student_proposal import curr_user_is_student
+from resources.students.student_proposal import curr_user_is_student
 
 
 class EditProfileInfo(Resource):

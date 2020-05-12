@@ -1,7 +1,7 @@
-from .profs import ProfsApi
-from .proposal_upload import ProposalUpload
-from .student_guide_file import GetStudentGuideFile
-from .student_proposal import SetProposalInfo
+from resources.profs.profs import ProfsApi
+from resources.students.proposal_upload import ProposalUpload
+from resources.students.student_guide_file import GetStudentGuideFile
+from resources.students.student_proposal import SetProposalInfo
 from .students import StudentsApi
 from resources.users.user import UsersApi
 from resources.users.auth import LoginApi, SignupApi

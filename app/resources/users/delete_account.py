@@ -4,7 +4,7 @@ from pymongo.errors import CursorNotFound
 
 from resources.errors import InternalServerError, UserNotExistsError
 from database.db import mongo
-from ..student_proposal import curr_user_is_student
+from resources.students.student_proposal import curr_user_is_student
 
 
 class DeleteAccount(Resource):
