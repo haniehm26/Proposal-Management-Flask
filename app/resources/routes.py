@@ -6,6 +6,8 @@ from resources.students.students import StudentsApi
 from resources.users.user import UsersApi
 from resources.users.sign_up import SignupApi
 from resources.users.password_handler import ForgotPassword, ResetPassword
+from .students.edit_proposal import EditProposal
+from .students.edit_supervisor import EditSupervisor
 from .users.delete_account import DeleteAccount
 from .users.edit_profile import EditProfileInfo
 from .users.login import LoginApi
@@ -25,5 +27,7 @@ def initialize_routes(api):
     api.add_resource(GetStudentGuideFile, '/api/get_student_guide_file')  # get
     api.add_resource(SetProposalInfo, '/api/set_proposal_info')  # post
     api.add_resource(ProposalUpload, '/api/proposal_upload')  # post
+    api.add_resource(EditProposal, '/api/edit_proposal')  # post
+    api.add_resource(EditSupervisor, '/api/edit_supervisor')  # post
     # PROF API
     api.add_resource(ProfsApi, '/api/profs')  # get
