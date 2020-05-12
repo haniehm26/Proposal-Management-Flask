@@ -6,8 +6,8 @@ from run.app import app
 from resources.errors import InternalServerError
 
 
-def send_async_email(app, msg):
-    with app.app_context():
+def send_async_email(application, msg):
+    with application.app_context():
         try:
             mail.send(msg)
         except ConnectionRefusedError:

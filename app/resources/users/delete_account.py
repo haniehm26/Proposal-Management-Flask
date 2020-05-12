@@ -13,13 +13,17 @@ class DeleteAccount(Resource):
         try:
             current_user_email = get_jwt_identity()
             users = mongo.db.users
-            users.delete_one({'email': current_user_email})
-            if curr_user_is_student(current_user_email):
-                students = mongo.db.students
-                students.delete_one({'email': current_user_email})
+            found_user = users.find_one({'email': current_user_email})
+            if found_user:
+                users.delete_one({'email': current_user_email})
+                if curr_user_is_student(current_user_email):
+                    students = mongo.db.students
+                    students.delete_one({'email': current_user_email})
+                else:
+                    profs = mongo.db.profs
+                    profs.delete_one({'email': current_user_email})
             else:
-                profs = mongo.db.profs
-                profs.delete_one({'email': current_user_email})
+                raise UserNotExistsError
             return ''
         except CursorNotFound:
             raise UserNotExistsError

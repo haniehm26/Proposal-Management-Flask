@@ -3,20 +3,19 @@ from flask_restful import Resource
 from flask import request, jsonify
 
 from database.db import mongo
+from resources.errors import UserNotExistsError
 
 
 class SetProposalInfo(Resource):
     @jwt_required
     def post(self):
         current_user_email = get_jwt_identity()
-        output = "None"
         if curr_user_is_student(current_user_email):
             out = "It's student"
             body = request.get_json()
             profs = mongo.db.profs
             supervisor = profs.find_one({'first_name': body.get('first_name'), 'last_name': body.get('last_name')})
             if supervisor:
-                output = "Supervisor found, info updated"
                 supervisor['supervisor_of'].append(current_user_email)
                 profs.update({'email': supervisor['email']}, {"$set": {'supervisor_of': supervisor['supervisor_of']}})
                 students = mongo.db.students
@@ -41,17 +40,18 @@ class SetProposalInfo(Resource):
                                         'references_other_languages'),
                                     'proposal_document_time_table': body.get('time_table')
                                 }})
-            else:
-                output = "Supervisor not found"
         else:
             out = "It's prof"
-        return jsonify({'out': out, 'output': output})
+        return jsonify({'out': out})
 
 
 def curr_user_is_student(curr_user_key):
     users = mongo.db.users
     user = users.find_one({'email': curr_user_key})
-    if user['is_prof'] == 'false':
-        return True
+    if user:
+        if user['is_prof'] == 'false':
+            return True
+        else:
+            return False
     else:
-        return False
+        raise UserNotExistsError
