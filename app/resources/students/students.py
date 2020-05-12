@@ -9,6 +9,10 @@ class StudentsApi(Resource):
         students = mongo.db.students
         output = []
         for u in students.find():
-            output.append(
-                {'email': u['email'], 'first_name': u['first_name'],'last_name': u['last_name']})
+            output.append({
+                'email': u['email'],
+                'first_name': u['first_name'],
+                'last_name': u['last_name'],
+                'proposal_supervisor_prof_email': u['proposal_supervisor_prof_email']
+            })
         return jsonify({'result': output})

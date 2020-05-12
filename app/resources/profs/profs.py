@@ -9,6 +9,10 @@ class ProfsApi(Resource):
         profs = mongo.db.profs
         output = []
         for u in profs.find():
-            output.append(
-                {'email': u['email'], 'first_name': u['first_name'], 'last_name': u['last_name']})
+            output.append({
+                'email': u['email'],
+                'first_name': u['first_name'],
+                'last_name': u['last_name'],
+                'supervisor_of': u['supervisor_of']
+            })
         return jsonify({'result': output})

@@ -23,7 +23,7 @@ class EditSupervisor(Resource):
                     students_list = before_supervisor_found['supervisor_of']
                     for email in students_list:
                         if email == current_user_email:
-                            students_list.remove(email)
+                            students_list.remove(current_user_email)
                             profs.update({'email': before_supervisor_found['email']},
                                          {"$set": {'supervisor_of': students_list}})
                             out = "DONE"
@@ -32,11 +32,12 @@ class EditSupervisor(Resource):
                     {'first_name': body.get('first_name'), 'last_name': body.get('last_name')}
                 )
                 if new_supervisor:
-                    new_supervisor['supervisor_of'].append(current_user_email)
-                    profs.update({'email': new_supervisor['email']},
-                                 {"$set": {'supervisor_of': new_supervisor['supervisor_of']}})
-                    students.update({'email': current_user_email},
-                                    {"$set": {'proposal_supervisor_prof_email': new_supervisor['email']}})
+                    if not new_supervisor['supervisor_of'].__contains__(current_user_email):
+                        new_supervisor['supervisor_of'].append(current_user_email)
+                        profs.update({'email': new_supervisor['email']},
+                                     {"$set": {'supervisor_of': new_supervisor['supervisor_of']}})
+                        students.update({'email': current_user_email},
+                                        {"$set": {'proposal_supervisor_prof_email': new_supervisor['email']}})
         else:
             out = "It's prof"
         return jsonify({'out': out})

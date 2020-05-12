@@ -10,6 +10,7 @@ from .students.edit_proposal import EditProposal
 from .students.edit_supervisor import EditSupervisor
 from .users.delete_account import DeleteAccount
 from .users.edit_profile import EditProfileInfo
+from .users.get_curr_user import GetCurrUser
 from .users.login import LoginApi
 
 
@@ -22,6 +23,7 @@ def initialize_routes(api):
     api.add_resource(DeleteAccount, '/api/delete_account')  # post
     api.add_resource(ForgotPassword, '/api/forgot_password')  # post
     api.add_resource(ResetPassword, '/api/reset_password')  # post
+    api.add_resource(GetCurrUser, '/api/get_curr_user')  # get
     # STUDENT API
     api.add_resource(StudentsApi, '/api/students')  # get
     api.add_resource(GetStudentGuideFile, '/api/get_student_guide_file')  # get
