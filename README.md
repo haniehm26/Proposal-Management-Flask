@@ -6,13 +6,11 @@
 
 ### تکنولوژی‌های استفاده شده
 
-Back-end : Django & Flask
+Back-end : Flask
 
 Front-end : Vue.js2, Bootstrap, HTML5, CSS
 
 Database : MongoDB
-
-Android : Java SE
 
 ### تیم سازنده
 
@@ -20,6 +18,4 @@ Android : Java SE
 
 **Back-end Developer :** Hanie Mahdavi
 
-**Front-end Developer :** Pouya Mohammadkhani
-
-**Native Android App :** Mehradad Naderi
+**Front-end Developer :** Pouya Mohammadkhani - Mehrdad Naderi
