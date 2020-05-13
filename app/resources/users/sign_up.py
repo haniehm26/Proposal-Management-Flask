@@ -55,7 +55,7 @@ def handle_student(new_user, body):
         'proposal_supervisor_prof_email': " ",
         'proposal_judge_1_email': " ",
         'proposal_judge_2_email': " ",
-        'proposal_state': " ",
+        'proposal_state': body.get('state'),
         'proposal_document_title_persian': " ",
         'proposal_document_title_english': " ",
         'proposal_document_keywords_persian': [],

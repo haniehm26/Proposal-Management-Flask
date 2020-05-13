@@ -53,6 +53,7 @@ def initialize_routes(api):
     #          "entry_date" : "1396",
     #          "field" : "مهندسی کامپیوتر",
     #          "attitude" : CHOICES -> GROUP,
+    #          "state" : CHOICES -> STUDENT_TYPE,
     #          "profile_pic" : ""
     #        }
     #
@@ -96,8 +97,33 @@ def initialize_routes(api):
 
     # STUDENT API------------------------------------------------------------------------------------- #
 
+    # input: {}
+    # output: list of students info
     api.add_resource(StudentsApi, '/api/students')  # get
+
+    # input: {}
+    # output: student_guid_file
     api.add_resource(GetStudentGuideFile, '/api/get_student_guide_file')  # get
+
+    # input: {
+    #          "first_name" : "alireza",
+    #          "last_name" : "shameli",
+    #          "title_persian" : "بهبود روش امتیازدهی",
+    #          "title_english": "Improving the method of scoring",
+    #          "keywords_persian": ["امتیازدهی","روش","بهبود"],
+    #          "keywords_english": ["improving","method","scoring"],
+    #          "type": CHOICES -> RESEARCH_TYPE,
+    #          "definition" :"تعریف",
+    # 	       "history": "تاریخچه",
+    # 	       "how_to_solve": "چگونگی حل",
+    # 	       "assumption": "فرض ها",
+    # 	       "is_new": "جدید بودن",
+    # 	       "tools": "ابزار",
+    # 	       "supportive_reference": "مابع حمایت کننده",
+    # 	       "references": "منابع فارسی",
+    # 	       "references_other_languages": "English sources",
+    # 	       "time_table": "جدول زمانی"
+    #        }
     api.add_resource(SetProposalInfo, '/api/set_proposal_info')  # post
     api.add_resource(ProposalUpload, '/api/proposal_upload')  # post
     api.add_resource(EditProposal, '/api/edit_proposal')  # post
