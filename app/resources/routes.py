@@ -19,18 +19,42 @@ from .users.login import LoginApi
 def initialize_routes(api):
     # USER API------------------------------------------------------------------------------------- #
 
-    # input: empty
+    # input: {}
     # output: list of users 'email' & 'is_prof'
     api.add_resource(UsersApi, '/api/users')  # get
 
-    # input: (required - for user): 'email' & 'password' & 'is_prof'
-    # input: (optional - for student & prof): 'first_name' & 'last_name' & 'id'
+    # input: (required - for user): {
+    #                                 "email" : "hanieh@mahdavi.com",
+    #                                 "password" : "1234567890",
+    #                                 "is_prof" : "false"
+    #                                 "first_name" : "hanieh",
+    #                                 "last_name" : "mahdavi",
+    #                                 "id" : "96243067"
+    #                               }
     # output: creates new user
     api.add_resource(SignupApi, '/api/signup')  # post
 
-    # input: 'email' & 'password'
+    # input: {
+    #         "email" : "hanieh@mahdavi.com",
+    #         "password" : "1234567890"
+    #        }
     # output: 'token'
     api.add_resource(LoginApi, '/api/login')  # post
+
+    # if user is STUDENT:
+    # these fields are optional
+    # input: {
+    #          "email" : "hanieh@mahdavi.com",
+    #          "password" : "1234567890",
+    #          "is_prof" : "false",
+    #          "first_name" : "hanieh",
+    #          "last_name" : "mahdavi",
+    #          "id" : "96243067",
+    #          "entry_date" : "1396"
+    #          "field" : "مهندسی کامپیوتر"
+    #          "attitude" : "2"
+    #          "profile_pic" : ""
+    #        }
     api.add_resource(EditProfileInfo, '/api/edit_profile_info')  # post
     api.add_resource(DeleteAccount, '/api/delete_account')  # post
     api.add_resource(ForgotPassword, '/api/forgot_password')  # post
