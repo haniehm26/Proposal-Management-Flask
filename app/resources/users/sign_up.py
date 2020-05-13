@@ -33,8 +33,6 @@ class SignupApi(Resource):
             return jsonify({'result': output})
         except CollectionInvalid:
             raise SchemaValidationError
-        except Exception:
-            raise InternalServerError
 
 
 def handle_student(new_user, body):

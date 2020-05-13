@@ -61,5 +61,3 @@ class EditProfileInfo(Resource):
             raise SchemaValidationError
         except CursorNotFound:
             raise UserNotExistsError
-        except Exception:
-            raise InternalServerError

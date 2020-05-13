@@ -39,8 +39,6 @@ class ForgotPassword(Resource):
             raise SchemaValidationError
         except EmailDoesNotExistsError:
             raise EmailDoesNotExistsError
-        except Exception:
-            raise InternalServerError
 
 
 class ResetPassword(Resource):
@@ -71,5 +69,3 @@ class ResetPassword(Resource):
             raise ExpiredTokenError
         except (DecodeError, InvalidTokenError):
             raise BadTokenError
-        except Exception:
-            raise InternalServerError

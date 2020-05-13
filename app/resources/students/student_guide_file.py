@@ -1,6 +1,5 @@
 from flask_restful import Resource
 from flask import abort, send_from_directory
-from database.db import mongo
 PATH = r"/static/download_files/pdf"
 
 

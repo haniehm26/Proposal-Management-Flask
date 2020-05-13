@@ -24,5 +24,3 @@ class LoginApi(Resource):
             return {'token': access_token}, 200
         except CursorNotFound:
             raise UnauthorizedError
-        except Exception:
-            raise InternalServerError
