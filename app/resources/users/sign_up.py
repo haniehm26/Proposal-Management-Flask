@@ -20,6 +20,12 @@ class SignupApi(Resource):
                 user_id = users.insert({'email': body['email'], 'password': password, 'is_prof': body['is_prof']})
                 new_user = users.find_one({'_id': user_id})
                 output = {'email': new_user['email'], 'is_prof': new_user['is_prof']}
+                inbox = mongo.db.inbox
+                inbox.insert({
+                    'receiver': new_user['email'],
+                    'sender': "",
+                    'messages': []
+                })
                 if new_user['is_prof'] == 'false':
                     handle_student(new_user, body)
                 else:

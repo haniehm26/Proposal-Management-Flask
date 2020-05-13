@@ -6,8 +6,10 @@ from resources.students.students import StudentsApi
 from resources.users.user import UsersApi
 from resources.users.sign_up import SignupApi
 from resources.users.password_handler import ForgotPassword, ResetPassword
+from resources.todo_list.inbox import InboxApi
 from .students.edit_proposal import EditProposal
 from .students.edit_supervisor import EditSupervisor
+from .todo_list.send_message import SendNewMessage
 from .users.delete_account import DeleteAccount
 from .users.edit_profile import EditProfileInfo
 from .users.get_curr_user import GetCurrUser
@@ -33,3 +35,6 @@ def initialize_routes(api):
     api.add_resource(EditSupervisor, '/api/edit_supervisor')  # post
     # PROF API
     api.add_resource(ProfsApi, '/api/profs')  # get
+    # TODO_LIST API
+    api.add_resource(InboxApi, '/api/inbox')  # get
+    api.add_resource(SendNewMessage, '/api/send_new_message')  # post
