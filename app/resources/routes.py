@@ -157,7 +157,19 @@ def initialize_routes(api):
     api.add_resource(EditSupervisor, '/api/edit_supervisor')  # post
 
     # PROF API------------------------------------------------------------------------------------- #
+
+    # input: {}
+    # output: list of profs info
     api.add_resource(ProfsApi, '/api/profs')  # get
-    # TODO_LIST API
+
+    # TODO_LIST API------------------------------------------------------------------------------------- #
+
+    # input: {}
+    # output: list of inbox info
     api.add_resource(InboxApi, '/api/inbox')  # get
+
+    # input: {
+    #          "head": "in titr ast",
+    # 	       "text": "in matn e payam ast"
+    #         }
     api.add_resource(SendNewMessage, '/api/send_new_message')  # post
