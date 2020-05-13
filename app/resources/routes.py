@@ -23,14 +23,14 @@ def initialize_routes(api):
     # output: list of users 'email' & 'is_prof'
     api.add_resource(UsersApi, '/api/users')  # get
 
-    # input: (required - for user): {
-    #                                 "email" : "hanieh@mahdavi.com",
-    #                                 "password" : "1234567890",
-    #                                 "is_prof" : "false"
-    #                                 "first_name" : "hanieh",
-    #                                 "last_name" : "mahdavi",
-    #                                 "id" : "96243067"
-    #                               }
+    # input: (required): {
+    #                      "email" : "hanieh@mahdavi.com",
+    #                      "password" : "1234567890",
+    #                      "is_prof" : "false"
+    #                      "first_name" : "hanieh",
+    #                      "last_name" : "mahdavi",
+    #                      "id" : "96243067"
+    #                    }
     # output: creates new user
     api.add_resource(SignupApi, '/api/signup')  # post
 
@@ -52,10 +52,27 @@ def initialize_routes(api):
     #          "id" : "96243067",
     #          "entry_date" : "1396"
     #          "field" : "مهندسی کامپیوتر"
-    #          "attitude" : "2"
+    #          "attitude" : CHOICES -> GROUP
+    #          "profile_pic" : ""
+    #        }
+    #
+    # if user is PROF:
+    # these fields are optional
+    # input: {
+    #          "email" : "alireza@shameli.com",
+    #          "password" : "1234567890",
+    #          "is_prof" : "true",
+    #          "first_name" : "alireza",
+    #          "last_name" : "shameli",
+    #          "id" : "12345",
+    #          "rank" : CHOICES -> PROFESSOR_STATUS
+    #          "field_of_study" : CHOICES -> GROUP
+    #          "responsibilities" : CHOICES -> PROFESSOR_RESPONSIBILITIES
     #          "profile_pic" : ""
     #        }
     api.add_resource(EditProfileInfo, '/api/edit_profile_info')  # post
+
+    
     api.add_resource(DeleteAccount, '/api/delete_account')  # post
     api.add_resource(ForgotPassword, '/api/forgot_password')  # post
     api.add_resource(ResetPassword, '/api/reset_password')  # post
