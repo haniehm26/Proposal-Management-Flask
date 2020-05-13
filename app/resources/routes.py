@@ -50,9 +50,9 @@ def initialize_routes(api):
     #          "first_name" : "hanieh",
     #          "last_name" : "mahdavi",
     #          "id" : "96243067",
-    #          "entry_date" : "1396"
-    #          "field" : "مهندسی کامپیوتر"
-    #          "attitude" : CHOICES -> GROUP
+    #          "entry_date" : "1396",
+    #          "field" : "مهندسی کامپیوتر",
+    #          "attitude" : CHOICES -> GROUP,
     #          "profile_pic" : ""
     #        }
     #
@@ -65,19 +65,37 @@ def initialize_routes(api):
     #          "first_name" : "alireza",
     #          "last_name" : "shameli",
     #          "id" : "12345",
-    #          "rank" : CHOICES -> PROFESSOR_STATUS
-    #          "field_of_study" : CHOICES -> GROUP
-    #          "responsibilities" : CHOICES -> PROFESSOR_RESPONSIBILITIES
+    #          "rank" : CHOICES -> PROFESSOR_STATUS,
+    #          "field_of_study" : CHOICES -> GROUP,
+    #          "responsibilities" : CHOICES -> PROFESSOR_RESPONSIBILITIES,
     #          "profile_pic" : ""
     #        }
     api.add_resource(EditProfileInfo, '/api/edit_profile_info')  # post
 
-    
+    # deletes the access of user
+    # input: {
+    #          "password" : "1234567890"
+    #        }
     api.add_resource(DeleteAccount, '/api/delete_account')  # post
+
+    # input: {
+    #          "email" : "hanieh@mahdavi.com"
+    #        }
+    # output: token for reset password
     api.add_resource(ForgotPassword, '/api/forgot_password')  # post
+
+    # input: {
+    #          "reset_token" : the token from forgot password,
+    #          "password" : new password
+    #        }
     api.add_resource(ResetPassword, '/api/reset_password')  # post
+
+    # input: {}
+    # output: returns current user email (it is not used in project)
     api.add_resource(GetCurrUser, '/api/get_curr_user')  # get
-    # STUDENT API
+
+    # STUDENT API------------------------------------------------------------------------------------- #
+
     api.add_resource(StudentsApi, '/api/students')  # get
     api.add_resource(GetStudentGuideFile, '/api/get_student_guide_file')  # get
     api.add_resource(SetProposalInfo, '/api/set_proposal_info')  # post
