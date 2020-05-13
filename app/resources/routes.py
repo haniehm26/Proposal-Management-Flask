@@ -125,10 +125,38 @@ def initialize_routes(api):
     # 	       "time_table": "جدول زمانی"
     #        }
     api.add_resource(SetProposalInfo, '/api/set_proposal_info')  # post
+
+    # input: {}
+    # output: student_proposal will be uploaded
     api.add_resource(ProposalUpload, '/api/proposal_upload')  # post
+
+    # these fields are optional
+    # input: {
+    #          "title_persian" : "بهبود روش امتیازدهی",
+    #          "title_english": "Improving the method of scoring",
+    #          "keywords_persian": ["امتیازدهی","روش","بهبود"],
+    #          "keywords_english": ["improving","method","scoring"],
+    #          "type": CHOICES -> RESEARCH_TYPE,
+    #          "definition" :"تعریف",
+    # 	       "history": "تاریخچه",
+    # 	       "how_to_solve": "چگونگی حل",
+    # 	       "assumption": "فرض ها",
+    # 	       "is_new": "جدید بودن",
+    # 	       "tools": "ابزار",
+    # 	       "supportive_reference": "مابع حمایت کننده",
+    # 	       "references": "منابع فارسی",
+    # 	       "references_other_languages": "English sources",
+    # 	       "time_table": "جدول زمانی"
+    #        }
     api.add_resource(EditProposal, '/api/edit_proposal')  # post
+
+    # input: {
+    #          "first_name" : "alireza",
+    #          "last_name" : "shameli",
+    #        }
     api.add_resource(EditSupervisor, '/api/edit_supervisor')  # post
-    # PROF API
+
+    # PROF API------------------------------------------------------------------------------------- #
     api.add_resource(ProfsApi, '/api/profs')  # get
     # TODO_LIST API
     api.add_resource(InboxApi, '/api/inbox')  # get
