@@ -23,11 +23,13 @@ def initialize_routes(api):
     # output: list of users 'email' & 'is_prof'
     api.add_resource(UsersApi, '/api/users')  # get
 
-    # input : (required - for user): 'email' & 'password' & 'is_prof'
-    # input : (optional - for student & prof): 'first_name' & 'last_name' & 'id'
+    # input: (required - for user): 'email' & 'password' & 'is_prof'
+    # input: (optional - for student & prof): 'first_name' & 'last_name' & 'id'
     # output: creates new user
     api.add_resource(SignupApi, '/api/signup')  # post
 
+    # input: 'email' & 'password'
+    # output: 'token'
     api.add_resource(LoginApi, '/api/login')  # post
     api.add_resource(EditProfileInfo, '/api/edit_profile_info')  # post
     api.add_resource(DeleteAccount, '/api/delete_account')  # post
