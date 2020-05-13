@@ -17,8 +17,11 @@ from .users.login import LoginApi
 
 
 def initialize_routes(api):
-    # USER API
+    # USER API------------------------------------------------------------------------------------- #
+    # input: empty
+    # output: list of users email & is_prof
     api.add_resource(UsersApi, '/api/users')  # get
+    
     api.add_resource(SignupApi, '/api/signup')  # post
     api.add_resource(LoginApi, '/api/login')  # post
     api.add_resource(EditProfileInfo, '/api/edit_profile_info')  # post
