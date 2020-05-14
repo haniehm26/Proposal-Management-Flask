@@ -14,13 +14,13 @@ type
 بنیادی
 
 supportive_reference
-منابع حمایت کننده
+مابع حمایت کننده
 
 how_to_solve
 چگونگی حل
 
 is_new
-it's new
+جدید بودن
 
 assumption
 فرض ها
@@ -42,4 +42,10 @@ English sources
 
 time_table
 جدول زمانی
+
+upload_date
+2020-05-14
+
+upload_time
+18:08:18.427182
 

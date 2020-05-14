@@ -19,6 +19,8 @@ flask-debugtoolbar = "*"
 flask-pymongo = "*"
 plt = "*"
 pyplot = "*"
+jinja2 = "*"
+pylatex = "*"
 
 [requires]
 python_version = "3.8"

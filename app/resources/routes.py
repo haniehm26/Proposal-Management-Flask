@@ -9,6 +9,7 @@ from resources.users.password_handler import ForgotPassword, ResetPassword
 from resources.todo_list.inbox import InboxApi
 from .students.edit_proposal import EditProposal
 from .students.edit_supervisor import EditSupervisor
+from .students.proposal_download import ProposalDownload
 from .todo_list.send_message import SendNewMessage
 from .users.delete_account import DeleteAccount
 from .users.edit_profile import EditProfileInfo
@@ -129,6 +130,10 @@ def initialize_routes(api):
     # input: {}
     # output: student_proposal will be uploaded
     api.add_resource(ProposalUpload, '/api/proposal_upload')  # get
+
+    # input: {}
+    # output: student_proposal will be downloaded
+    api.add_resource(ProposalDownload, '/api/proposal_download')  # get
 
     # these fields are optional
     # input: {

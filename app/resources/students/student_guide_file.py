@@ -1,6 +1,7 @@
 from flask_restful import Resource
 from flask import abort, send_from_directory
-PATH = r"/static/download_files/pdf"
+
+PATH = r"D:/Uni/Term 6/Software/Project/Project-Flask/app/static/download_files/pdf/"
 
 
 class GetStudentGuideFile(Resource):
