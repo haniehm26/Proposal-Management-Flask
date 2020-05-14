@@ -21,6 +21,8 @@ plt = "*"
 pyplot = "*"
 jinja2 = "*"
 pylatex = "*"
+cors = "*"
+flask-cors = "*"
 
 [requires]
 python_version = "3.8"
