@@ -128,7 +128,7 @@ def initialize_routes(api):
 
     # input: {}
     # output: student_proposal will be uploaded
-    api.add_resource(ProposalUpload, '/api/proposal_upload')  # post
+    api.add_resource(ProposalUpload, '/api/proposal_upload')  # get
 
     # these fields are optional
     # input: {

@@ -7,7 +7,7 @@ from jwt.exceptions import ExpiredSignatureError, DecodeError, \
 
 from database.hashing import hash_password
 from database.db import mongo
-from resources.errors import SchemaValidationError, InternalServerError, \
+from resources.errors import SchemaValidationError, \
     EmailDoesNotExistsError, BadTokenError, ExpiredTokenError
 from services.mail_service import send_email
 
@@ -56,7 +56,7 @@ class ResetPassword(Resource):
 
             users = mongo.db.users
             hashed_password = hash_password(body['password'])
-            output = users.update({'email': user_email}, {'password': hashed_password})
+            output = users.update({'email': user_email}, {"$set": {'password': hashed_password}})
             return send_email('[Proposal-Management] Password reset successful',
                               sender='support@proposal-management.com',
                               recipients=[user_email],

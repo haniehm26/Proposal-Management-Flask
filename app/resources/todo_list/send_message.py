@@ -30,8 +30,8 @@ class SendNewMessage(Resource):
             if new_todo:
                 found_inbox = inbox.find_one({'receiver': current_user_email})
                 if found_inbox:
-                    new_message = new_todo['head'] + ", " + new_todo['body'] + ", " + new_todo['time'] + ", " \
-                                  + new_todo['date'] + ", " + new_todo['is_done']
+                    new_message = new_todo['head'] + "\n" + new_todo['body'] + "\n" + new_todo['time'] + "\n" \
+                                  + new_todo['date'] + "\n" + new_todo['is_done']
                     found_inbox['messages'].append(new_message)
                     inbox.update({'receiver': current_user_email},
                                  {"$set": {'messages': found_inbox['messages']}})
