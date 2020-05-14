@@ -9,8 +9,13 @@ from database.db import initialize_db
 
 app = Flask(__name__)
 
-# use this before running project in windows
-# set ENV_FILE_LOCATION=./.env
+# for handling Cross Origin Resource Sharing (CORS), making cross-origin AJAX possible.
+# (Use this when calling APIs from front-end browser)
+CORS(app)
+
+# Windows: Type in this command in 'cmd', before running the project
+# $ set ENV_FILE_LOCATION=./.env
+# 'ENV_FILE_LOCATION' stands for the relative location of '.env' file in Server directory
 app.config.from_envvar('ENV_FILE_LOCATION')
 
 # this is for mail service, used in forgot and reset password.
