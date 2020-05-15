@@ -29,9 +29,10 @@ class ProposalDownload(Resource):
 
 
 def initialize_path(file_name):
-    path = r"D:/Uni/Term 6/Software/Project/Project-Flask/app/static/download_files/txt/"
-    new_path = os.path.join(path, file_name + "/")
-    if not os.path.exists(path):
+    curr_path = os.path.abspath('.')
+    relative_path = r"static/download_files/txt/"
+    new_path = os.path.join(curr_path, relative_path, file_name + "/")
+    if not os.path.exists(relative_path):
         os.mkdir(new_path)
     return new_path
 
