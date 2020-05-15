@@ -18,10 +18,12 @@ class SetProposalInfo(Resource):
             if supervisor:
                 if not supervisor['supervisor_of'].__contains__(current_user_email):
                     supervisor['supervisor_of'].append(current_user_email)
-                    profs.update({'email': supervisor['email']}, {"$set": {'supervisor_of': supervisor['supervisor_of']}})
+                    profs.update({'email': supervisor['email']},
+                                 {"$set": {'supervisor_of': supervisor['supervisor_of']}})
                     students = mongo.db.students
                     student = students.find_one({'email': current_user_email})
                     if student:
+                        out = "done"
                         students.update({'email': student['email']},
                                         {"$set": {
                                             'proposal_supervisor_prof_email': supervisor['email'],
