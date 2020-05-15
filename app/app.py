@@ -36,7 +36,7 @@ jwt = JWTManager(app)
 
 # definition of database
 app.config['MONGO_DBNAME'] = 'proposal-management'
-app.config['MONGO_URI'] = 'mongodb://localhost/proposal-management'
+app.config['MONGO_URI'] = 'mongodb://localhost:27017/proposal-management'
 initialize_db(app)
 
 # initialize api routes
