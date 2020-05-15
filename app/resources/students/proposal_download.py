@@ -1,5 +1,5 @@
 import io
-
+import os
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from flask_restful import Resource
 from flask import abort, send_from_directory
@@ -28,16 +28,22 @@ class ProposalDownload(Resource):
             return "It's prof"
 
 
-PATH = r"D:/Uni/Term 6/Software/Project/Project-Flask/app/static/download_files/txt/"
+def initialize_path(file_name):
+    path = r"D:/Uni/Term 6/Software/Project/Project-Flask/app/static/download_files/txt/"
+    new_path = os.path.join(path, file_name + "/")
+    if not os.path.exists(path):
+        os.mkdir(new_path)
+    return new_path
 
 
 def download_file(contents, file_name):
+    path = initialize_path(file_name)
     file_name = file_name + '.txt'
-    with io.open(PATH + file_name, "w", encoding="utf-8") as f:
+    with io.open(path + file_name, "w", encoding="utf-8") as f:
         for lines in contents:
             f.write(lines)
     f.close()
     try:
-        return send_from_directory(PATH, filename=file_name, as_attachment=True)
+        return send_from_directory(path, filename=file_name, as_attachment=True)
     except FileNotFoundError:
         abort(404)
