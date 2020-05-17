@@ -3,7 +3,7 @@ from flask_restful import Resource
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from pymongo.errors import CursorNotFound, ConfigurationError
 
-from resources.errors import InternalServerError, SchemaValidationError, UserNotExistsError
+from resources.errors import SchemaValidationError, UserNotExistsError
 from database.db import mongo
 from database.hashing import hash_password
 from resources.students.student_proposal import curr_user_is_student
@@ -19,11 +19,11 @@ class EditProfileInfo(Resource):
             if found_user:
                 body = request.get_json()
                 password = hash_password(body['password'])
-                output = users.update({'email': current_user_email},
-                                      {"$set": {'email': body['email'],
-                                                'password': password,
-                                                'is_prof': body['is_prof']}
-                                       })
+                users.update({'email': current_user_email},
+                             {"$set": {'email': body['email'],
+                                       'password': password,
+                                       'is_prof': body['is_prof']}
+                              })
                 if curr_user_is_student(current_user_email):
                     students = mongo.db.students
                     student = students.find_one({'email': current_user_email})
@@ -37,6 +37,7 @@ class EditProfileInfo(Resource):
                                               'info_attitude': body['attitude'],
                                               'info_profile_pic': body['profile_pic']
                                               }})
+                    output = "Student info updated successfully"
                 else:
                     profs = mongo.db.profs
                     prof = profs.find_one({'email': current_user_email})
@@ -53,6 +54,7 @@ class EditProfileInfo(Resource):
                                            'info_profile_pic': body['profile_pic'],
                                            'info_responsibilities': body['responsibilities']
                                            }})
+                    output = "Prof info updated successfully"
             else:
                 raise UserNotExistsError
             return jsonify(output)

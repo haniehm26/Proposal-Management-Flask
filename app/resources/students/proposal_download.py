@@ -22,6 +22,8 @@ class ProposalDownload(Resource):
                     grid_out = fsb.open_download_stream_by_name(proposal_file.filename)
                     contents = grid_out.read().decode()
                     return download_file(contents, proposal_file.filename)
+                else:
+                    return "File does not exists"
             else:
                 return "Student not found"
         else:

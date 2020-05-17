@@ -11,7 +11,6 @@ class EditProposal(Resource):
     def post(self):
         current_user_email = get_jwt_identity()
         if curr_user_is_student(current_user_email):
-            out = "It's student"
             body = request.get_json()
             students = mongo.db.students
             student = students.find_one({'email': current_user_email})
@@ -35,6 +34,9 @@ class EditProposal(Resource):
                                         body.get('references_other_languages'),
                                     'proposal_document_time_table': body.get('time_table')
                                 }})
+                out = "Proposal is updated successfully"
+            else:
+                out = "Student not found"
         else:
             out = "It's prof"
         return jsonify({'out': out})

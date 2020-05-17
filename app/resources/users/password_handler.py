@@ -26,15 +26,15 @@ class ForgotPassword(Resource):
                 raise EmailDoesNotExistsError
 
             expires = datetime.timedelta(hours=24)
-            reset_token = create_access_token(
-                email, expires_delta=expires)
+            reset_token = create_access_token(email, expires_delta=expires)
 
-            return send_email('[Proposal-Management] Reset Your Password',
-                              sender='support@proposal-management.com',
-                              recipients=[email],
-                              text_body=render_template(
-                                  'email/reset_password.txt', url=url + reset_token),
-                              html_body=render_template('email/reset_password.html', url=url + reset_token))
+            return send_email(
+                subject='[Proposal-Management] Reset Your Password',
+                sender='support@proposal-management.com',
+                recipients=[email],
+                text_body=render_template('email/reset_password.txt', url=url + reset_token),
+                html_body=render_template('email/reset_password.html', url=url + reset_token)
+            )
         except SchemaValidationError:
             raise SchemaValidationError
         except EmailDoesNotExistsError:

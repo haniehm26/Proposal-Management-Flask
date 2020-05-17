@@ -6,7 +6,7 @@ from pymongo.errors import CursorNotFound
 
 from database.hashing import check_password
 from database.db import mongo
-from resources.errors import InternalServerError, UnauthorizedError
+from resources.errors import UnauthorizedError
 
 
 class LoginApi(Resource):

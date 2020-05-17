@@ -7,22 +7,12 @@ verify_ssl = true
 
 [packages]
 flask = "*"
-flask-mongoengine = "*"
 flask-restful = "*"
 flask-bcrypt = "*"
-flask-mail = "*"
 flask-jwt-extended = "*"
-flask-admin = "*"
-flask-appbuilder = "*"
-flask-user = "*"
-flask-debugtoolbar = "*"
-flask-pymongo = "*"
-plt = "*"
-pyplot = "*"
-jinja2 = "*"
-pylatex = "*"
-cors = "*"
+flask-mail = "*"
 flask-cors = "*"
+flask-pymongo = "*"
 
 [requires]
 python_version = "3.8"

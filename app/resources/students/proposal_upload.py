@@ -12,7 +12,6 @@ class ProposalUpload(Resource):
     @jwt_required
     def get(self):
         current_user_email = get_jwt_identity()
-        out = "NONE"
         if curr_user_is_student(current_user_email):
             students = mongo.db.students
             student = students.find_one({'email': current_user_email})
@@ -40,7 +39,7 @@ class ProposalUpload(Resource):
                 for key, val in proposal.items():
                     proposal_file.write(key + '\n' + str(val) + '\n\n')
                 proposal_file.close()
-                out = "Successful"
+                out = "Successfully done"
             else:
                 out = "Student not found"
         else:

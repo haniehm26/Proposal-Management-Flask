@@ -11,7 +11,6 @@ class SetProposalInfo(Resource):
     def post(self):
         current_user_email = get_jwt_identity()
         if curr_user_is_student(current_user_email):
-            out = "It's student"
             body = request.get_json()
             profs = mongo.db.profs
             supervisor = profs.find_one({'first_name': body.get('first_name'), 'last_name': body.get('last_name')})
@@ -23,7 +22,6 @@ class SetProposalInfo(Resource):
                     students = mongo.db.students
                     student = students.find_one({'email': current_user_email})
                     if student:
-                        out = "done"
                         students.update({'email': student['email']},
                                         {"$set": {
                                             'proposal_supervisor_prof_email': supervisor['email'],
@@ -44,6 +42,13 @@ class SetProposalInfo(Resource):
                                                 body.get('references_other_languages'),
                                             'proposal_document_time_table': body.get('time_table')
                                         }})
+                        out = "Successfully it is done"
+                    else:
+                        out = "Student not found"
+                else:
+                    out = "This student is already in supervisor list"
+            else:
+                out = "Supervisor is not found"
         else:
             out = "It's prof"
         return jsonify({'out': out})

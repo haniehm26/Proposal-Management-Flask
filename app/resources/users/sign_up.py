@@ -4,7 +4,7 @@ from pymongo.errors import CollectionInvalid
 
 from database.hashing import hash_password
 from database.db import mongo
-from resources.errors import InternalServerError, EmailAlreadyExistsError, SchemaValidationError
+from resources.errors import EmailAlreadyExistsError, SchemaValidationError
 
 
 class SignupApi(Resource):

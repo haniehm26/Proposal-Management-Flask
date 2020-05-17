@@ -26,7 +26,6 @@ class SendNewMessage(Resource):
             })
             new_todo = messages.find_one({'_id': message_id})
         if curr_user_is_student(current_user_email):
-            out = "It's student"
             if new_todo:
                 found_inbox = inbox.find_one({'receiver': current_user_email})
                 if found_inbox:
@@ -36,6 +35,10 @@ class SendNewMessage(Resource):
                     inbox.update({'receiver': current_user_email},
                                  {"$set": {'messages': found_inbox['messages']}})
                     out = new_message
+                else:
+                    out = "Inbox is not found"
+            else:
+                out = "Message is not found"
         else:
             out = "It's prof"
         return out
