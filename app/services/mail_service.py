@@ -8,10 +8,10 @@ from resources.errors import InternalServerError
 
 def send_async_email(app, msg):
     with app.app_context():
-        # try:
-        mail.send_message(msg)
-    # except ConnectionRefusedError:
-    #     raise InternalServerError("[MAIL SERVER] not working")
+        try:
+            mail.send_message(msg)
+        except ConnectionRefusedError:
+            raise InternalServerError("[MAIL SERVER] not working")
 
 
 def send_email(subject, sender, recipients, text_body, html_body):
