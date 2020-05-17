@@ -14,7 +14,7 @@ from services.mail_service import send_email
 
 class ForgotPassword(Resource):
     def post(self):
-        url = request.host_url + 'reset/'
+        url = request.host_url + 'reset_password/'
         try:
             body = request.get_json()
             email = body.get('email')
@@ -43,7 +43,7 @@ class ForgotPassword(Resource):
 
 class ResetPassword(Resource):
     def post(self):
-        url = request.host_url + 'reset/'
+        url = request.host_url + 'reset_password/'
         try:
             body = request.get_json()
             reset_token = body.get('reset_token')
