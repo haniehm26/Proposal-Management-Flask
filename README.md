@@ -16,6 +16,6 @@ Database : MongoDB
 
 **UI/UX Desing :** Mojtaba Torabi
 
-**Back-end Developer :** Hanie Mahdavi
+**Back-end Developer :** Hanieh Mahdavi
 
 **Front-end Developer :** Pouya Mohammadkhani - Mehrdad Naderi
